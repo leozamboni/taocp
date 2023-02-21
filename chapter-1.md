@@ -1,0 +1,78 @@
+## 1.
+
+```js
+/*
+temp <- a
+a <- b
+b <- c
+c <- d
+d <- temp
+*/
+let a = 1,
+  b = 2,
+  c = 3,
+  d = 4; // b, c, d, a -> 2, 3, 4, 1.
+
+let temp = a;
+a = b; // 1 -> 2
+b = c; // 2 -> 3
+c = d; // 3 -> 4
+d = temp; // 4 -> 1
+```
+
+## 2.
+
+```js
+/*
+[en]
+In the first time M and N can be any positive number;
+
+In line 35 and 37, R always be > 0, and < N after the first time;
+
+When M is replaced by N and N is replaced by R, this keep the previous rule.
+
+[pt-br]
+No comeco M e N podem ser qualquer número positivo, com isso não é possível garantir M > N;
+
+Em qualquer caso R sempre será < N;
+
+Caso R > 0, M será N e N será R, garantindo M > N.
+*/
+let m = 1,
+  n = 2;
+
+function E() {
+  let r = m % n;
+
+  if (r === 0) return n;
+
+  m = n;
+  n = r;
+
+  return E();
+}
+E();
+```
+
+## 3.
+
+```js
+/*
+F1. [Find remainder] Divide m by n and let m be the remainder. (0 ≤ m ≤ n)
+F2. [Is it zero?] If m = 0, the algorithm terminates; n is the answer.
+F3. [Find remainder] Divide n by m and let n be the remainder. (0 ≤ n ≤ m)
+F4. [Is it zero?] If n = 0, the algorithm terminates; m is the answer, else go back to step F1.
+*/
+let m = 2,
+  n = 1;
+
+function F() {
+  m = m % n;
+  if (m === 0) return n;
+
+  n = n % m;
+  if (n === 0) return m;
+  return F();
+}
+F();
+```
